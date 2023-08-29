@@ -5,8 +5,8 @@ pipeline {
             
             steps{
                 echo 'Pulling...';
-                git branch: 'ahmed',
-                url : 'https://github.com/eskander1998/ProjetDevops'
+                git branch: 'main',
+                url : 'https://github.com/AhmedKaroui99/GreenPlatform1.git'
             }
         }
        stage('Testing maven') {
@@ -47,7 +47,7 @@ pipeline {
        
        stage('Build Docker image Backend') {
             steps {
-                sh 'docker build -t goro1809/projetdevopsbackend . '
+                sh 'docker build -t goro1809/projetgreen . '
                  
             }
         }
@@ -59,7 +59,7 @@ pipeline {
 			}
         stage('Push image Backend to Dockerhub') {
             steps {
-                sh 'docker push goro1809/projetdevopsbackend'
+                sh 'docker push goro1809/projetgreen'
                  
             }
         }
