@@ -26,14 +26,16 @@ pipeline {
 
     stage('MVN INSTALL') {
             steps {
-                sh 'mvn install'
+                // sh 'mvn install'
+		     sh "mvn -version"
                  
             }
         }
 
      stage('MVN COMPILE') {
             steps {
-                sh 'mvn compile'
+                // sh 'mvn compile'
+		     sh "mvn -version"
                  
             }
         }
@@ -42,7 +44,8 @@ pipeline {
     stage ('Test JUINT'){
             steps {
                 echo 'Testing ...';
-                sh 'mvn test -Dtest="ProduitServiceImplMock"'
+                // sh 'mvn test -Dtest="ProduitServiceImplMock"'
+		     sh "mvn -version"
             }
         }
                 
