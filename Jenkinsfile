@@ -66,7 +66,8 @@ pipeline {
         stage('Login Dockerhub') {
 
 			steps {
-			sh 'docker login -u goro1809 -p Ahmed1999Amin2004'
+			// sh 'docker login -u usename -p password'
+				 sh "mvn -version"
 			}
 			}
         stage('Push image Backend to Dockerhub') {
