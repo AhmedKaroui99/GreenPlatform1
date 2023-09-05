@@ -2,17 +2,14 @@
 pipeline {
     agent any
     stages {
-			stage('check out git') {
-    steps {
-        checkout([$class: 'GitSCM', 
-            branches: [[name: 'AhmedKaroui']],
-            userRemoteConfigs: [[
-                url: 'https://github.com/AhmedKaroui99/GreenPlatform1.git',
-                credentialsId: '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'
-            ]]
-        ])
-    }
-}
+			stage('check out git'){       
+            
+            steps{
+                echo 'Pulling...'; 
+                git branch: 'AhmedKaroui',
+                url : 'https://github.com/AhmedKaroui99/GreenPlatform1.git'
+            }
+        }
 
        stage('Testing maven') {
             steps {
