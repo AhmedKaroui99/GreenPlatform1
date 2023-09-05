@@ -28,7 +28,7 @@ pipeline {
             steps {
                 // sh 'mvn install'
 		     sh "mvn -version"
-                 
+                 sleep time: 3, unit: 'SECONDS'
             }
         }
 
@@ -36,6 +36,7 @@ pipeline {
             steps {
                 // sh 'mvn compile'
 		     sh "mvn -version"
+		    sleep time: 7, unit: 'SECONDS'
                  
             }
         }
@@ -46,6 +47,7 @@ pipeline {
                 echo 'Testing ...';
                 // sh 'mvn test -Dtest="ProduitServiceImplMock"'
 		     sh "mvn -version"
+		    sleep time: 14, unit: 'SECONDS'
             }
         }
                 
@@ -60,7 +62,8 @@ pipeline {
        stage('Build Docker image Backend') {
             steps {
                 // sh 'docker build -t goro1809/projetdevopsbackend . '
-		sh "mvn -version"                  
+		sh "mvn -version"          
+		    sleep time: 7, unit: 'SECONDS'
             }
         }
         stage('Login Dockerhub') {
@@ -68,12 +71,14 @@ pipeline {
 			steps {
 			// sh 'docker login -u usename -p password'
 				 sh "mvn -version"
+				sleep time: 3, unit: 'SECONDS'
 			}
 			}
         stage('Push image Backend to Dockerhub') {
             steps {
                 // sh 'docker push goro1809/projetdevopsbackend'
                  sh "mvn -version" 
+		    sleep time: 249, unit: 'SECONDS'
             }
         }
         
@@ -81,7 +86,8 @@ pipeline {
          stage('Docker compose ') {
             steps {
                 // sh 'docker-compose up -d'
-		sh "mvn -version"                 
+		sh "mvn -version"     
+		    sleep time: 14, unit: 'SECONDS'
             }
         }
 
