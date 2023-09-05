@@ -4,8 +4,9 @@ pipeline {
 			stage('check out git'){       
             
             steps{
-                echo 'Pulling...';
+                echo 'Pulling...'; 
                 git branch: 'AhmedKaroui',
+		credentialsId: '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', 
                 url : 'https://github.com/AhmedKaroui99/GreenPlatform1.git'
             }
         }
