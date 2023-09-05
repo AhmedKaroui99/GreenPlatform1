@@ -1,25 +1,19 @@
+
 pipeline {
     agent any
     stages {
-			stage('check out git'){       
-            
-               steps {
-                script {
-                    // Define the credentials ID
-                    def credentialsId = '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'
+			stage('check out git') {
+    steps {
+        checkout([$class: 'GitSCM', 
+            branches: [[name: 'AhmedKaroui']],
+            userRemoteConfigs: [[
+                url: 'https://github.com/AhmedKaroui99/GreenPlatform1.git',
+                credentialsId: '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'
+            ]]
+        ])
+    }
+}
 
-                    // Use the withCredentials step to securely pass the credentials
-                    withCredentials([string(credentialsId: credentialsId, variable: 'GIT_TOKEN')]) {
-                        sh '''
-                            echo 'Pulling...'
-                            git config --global credential.helper "store --file=/tmp/git-credentials"
-                            echo "https://${GIT_TOKEN}@github.com/AhmedKaroui99/GreenPlatform1.git" > /tmp/git-credentials
-                            git clone https://${GIT_TOKEN}@github.com/AhmedKaroui99/GreenPlatform1.git
-                        '''
-                    }
-                }
-            }
-        }
        stage('Testing maven') {
             steps {
                 sh "mvn -version"
