@@ -1,7 +1,7 @@
 pipeline {
    agent any
     stages {
-			stage('check out git'){       
+			stage('Clone Source Code Spring boot application'){       
             
             steps{
                 echo 'Pulling...'; 
@@ -36,4 +36,5 @@ pipeline {
 		sleep time: 7, unit: 'SECONDS'
             }
         }
+}
 }
