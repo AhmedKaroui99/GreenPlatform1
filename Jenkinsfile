@@ -1,7 +1,7 @@
 pipeline {
-    agent any
+   agent any
     stages {
-       stage('Clone Source Code Spring boot application'){       
+			stage('check out git'){       
             
             steps{
                 echo 'Pulling...'; 
